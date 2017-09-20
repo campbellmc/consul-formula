@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=sls
+
 {% from slspath+"/map.jinja" import consul with context %}
 
 consul-dep-unzip:
@@ -13,10 +16,12 @@ consul-bin-dir:
 consul-user:
   group.present:
     - name: consul
+    - system: True
   user.present:
     - name: consul
     - createhome: false
     - system: true
+    - gid_from_name: True
     - groups:
       - consul
     - require:
