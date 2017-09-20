@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
 consul:
   version: 0.7.0
   download_host: releases.hashicorp.com
