@@ -28,19 +28,3 @@ consul-script-install-{{ loop.index }}:
     - mode: 0755
 {% endfor %}
 
-consul-script-config:
-  file.managed:
-    - source: salt://{{ slspath }}/files/services.json
-    - name: /etc/consul.d/services.json
-    - template: jinja
-    {% if consul.service != False %}
-    - watch_in:
-       - service: consul
-    {% endif %}
-    - user: consul
-    - group: consul
-    - require:
-      - user: consul
-    - context:
-        register: |
-          {{ consul.register | json }}

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
 {% import_yaml "consul-template/defaults.yaml" as defaults %}
 
 {% set consul_template = salt['pillar.get']('consul_template', default=defaults.consul_template, merge=True) %}

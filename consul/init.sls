@@ -4,6 +4,6 @@
 {% from slspath+"/map.jinja" import consul with context %}
 
 include:
-  - {{ slspath }}.install
-  - {{ slspath }}.config
-  - {{ slspath }}.service
+  - {{slspath}}.install
+  - {{slspath}}.config
+  - {{slspath}}.service

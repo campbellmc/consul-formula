@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=sls
+
 {% from "consul-template/map.jinja" import consul with context %}
 
 include:

@@ -1,31 +1,29 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{%- from slspath+"/map.jinja" import consul with context -%}
+{% from slspath+"/map.jinja" import consul with context %}
 
 consul-init-file:
   file.managed:
-    {%- if salt['test.provider']('service') == 'systemd' %}
+    {% if salt['test.provider']('service') == 'systemd' %}
     - source: salt://{{ slspath }}/files/consul.service
     - name: /etc/systemd/system/consul.service
     - mode: 0644
-    {%- elif salt['test.provider']('service') == 'upstart' %}
+    {% elif salt['test.provider']('service') == 'upstart' %}
     - source: salt://{{ slspath }}/files/consul.upstart
     - name: /etc/init/consul.conf
     - mode: 0644
-    {%- else %}
+    {% else %}
     - source: salt://{{ slspath }}/files/consul.sysvinit
     - name: /etc/init.d/consul
     - mode: 0755
-    {%- endif %}
+    {% endif %}
 
-{%- if consul.service %}
-
+{% if consul.service %}
 consul-service:
   service.running:
     - name: consul
     - enable: True
     - watch:
       - file: consul-init-file
-
-{%- endif %}
+{% endif %}

@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 
+---
 consul:
-  version: 0.7.0
-  download_host: releases.hashicorp.com
-
-  service: false
   config:
-    server: false
-    bind_addr: 0.0.0.0
+    bind_addr: "0.0.0.0"
     data_dir: /var/consul
-    ui: true
+    datacenter: main
     enable_debug: false
-    log_level: info
     encrypt: ""
-    retry_join: []
+    log_level: info
     retry_interval: 30s
-    datacenter: "main"
+    retry_join: []
+    server: false
+    ui: true
+  download_host: releases.hashicorp.com
   register: []
   scripts: []
+  service: false
+  version: "0.7.0"
