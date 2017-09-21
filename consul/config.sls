@@ -3,7 +3,7 @@
 
 {% from slspath+"/map.jinja" import consul with context %}
 
-consul-config:
+consul_config_json:
   file.managed:
     - name: /etc/consul.d/config.json
     {% if consul.service != False %}
@@ -16,15 +16,3 @@ consul-config:
       - user: consul
     - contents: |
         {{ consul.config | json }}
-
-{% for script in consul.scripts %}
-consul-script-install-{{ loop.index }}:
-  file.managed:
-    - source: {{ script.source }}
-    - name: {{ script.name }}
-    - template: jinja
-    - user: consul
-    - group: consul
-    - mode: 0755
-{% endfor %}
-
