@@ -7,8 +7,8 @@ consul_config_json:
   file.managed:
     - name: /etc/consul.d/config.json
     {% if consul.service != False %}
-    - watch_in:
-       - service: consul
+{#    - watch_in: #}
+{#       - service: consul #}
     {% endif %}
     - user: consul
     - group: consul
